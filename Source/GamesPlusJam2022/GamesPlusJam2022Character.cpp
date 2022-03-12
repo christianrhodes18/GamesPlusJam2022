@@ -51,7 +51,7 @@ AGamesPlusJam2022Character::AGamesPlusJam2022Character()
 	// Configure character movement
 	GetCharacterMovement()->GravityScale = 2.0f;
 	GetCharacterMovement()->AirControl = 0.80f;
-	GetCharacterMovement()->JumpZVelocity = 10.0f;
+	GetCharacterMovement()->JumpZVelocity = 1000.0f;
 	GetCharacterMovement()->GroundFriction = 3.0f;
 	GetCharacterMovement()->MaxWalkSpeed = 600.0f;
 	GetCharacterMovement()->MaxFlySpeed = 600.0f;
