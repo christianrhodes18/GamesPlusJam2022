@@ -9,6 +9,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "Camera/CameraComponent.h"
+#include "InputCoreTypes.h"
 
 DEFINE_LOG_CATEGORY_STATIC(SideScrollerCharacter, Log, All);
 
@@ -85,11 +86,10 @@ void AGamesPlusJam2022Character::UpdateAnimation()
 	const float PlayerSpeedSqr = PlayerVelocity.SizeSquared();
 
 	// Are we moving or standing still?
-	UPaperFlipbook* DesiredAnimation = (PlayerSpeedSqr > 0.0f) ? FB_Knight_Run : FB_Knight_Idle;
-	//UPaperFlipbook* DesiredAnimation = (PlayerSpeedSqr > 0.0f) ? RunningAnimation : IdleAnimation;
-	if( GetSprite()->GetFlipbook() != DesiredAnimation 	)
+	UPaperFlipbook* animationWalk = (PlayerSpeedSqr > 0.0f) ? FB_Knight_Run : FB_Knight_Idle;
+	if( GetSprite()->GetFlipbook() != animationWalk 	)
 	{
-		GetSprite()->SetFlipbook(DesiredAnimation);
+		GetSprite()->SetFlipbook(animationWalk);
 	}
 }
 
@@ -109,6 +109,7 @@ void AGamesPlusJam2022Character::SetupPlayerInputComponent(class UInputComponent
 	// Note: the 'Jump' action and the 'MoveRight' axis are bound to actual keys/buttons/sticks in DefaultInput.ini (editable from Project Settings..Input)
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+	//PlayerInputComponent->BindAction("Attack", IE_Pressed, this, &AGamesPlusJam2022Character::Attack);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AGamesPlusJam2022Character::MoveRight);
 
 	PlayerInputComponent->BindTouch(IE_Pressed, this, &AGamesPlusJam2022Character::TouchStarted);

@@ -32,21 +32,30 @@ class AGamesPlusJam2022Character : public APaperCharacter
 	UTextRenderComponent* TextComponent;
 	virtual void Tick(float DeltaSeconds) override;
 protected:
-	// The animation to play while running around
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Animations)
-	//class UPaperFlipbook* RunningAnimation;
 
-	// replace above running animation with knight running animation
+	// Run
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Animations)
 	class UPaperFlipbook* FB_Knight_Run;
 
-	// The animation to play while idle (standing still)
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
-	//class UPaperFlipbook* IdleAnimation;
-
-	// replace above idle animation with knight idle animation
+	// Idle
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Animations)
 	class UPaperFlipbook* FB_Knight_Idle;
+
+	// Run
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Animations)
+	class UPaperFlipbook* FB_Knight_Jump;
+	
+	// Attack
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Animations)
+    class UPaperFlipbook* FB_Knight_Attack;
+    
+    // Roll
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Animations)
+	class UPaperFlipbook* FB_Knight_Roll;
+        
+	// Block
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Animations)
+	class UPaperFlipbook* FB_Knight_Shield;
 
 	/** Called to choose the correct animation to play based on the character's movement state */
 	void UpdateAnimation();
