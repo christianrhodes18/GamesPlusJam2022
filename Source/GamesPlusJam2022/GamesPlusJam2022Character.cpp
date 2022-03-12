@@ -85,7 +85,8 @@ void AGamesPlusJam2022Character::UpdateAnimation()
 	const float PlayerSpeedSqr = PlayerVelocity.SizeSquared();
 
 	// Are we moving or standing still?
-	UPaperFlipbook* DesiredAnimation = (PlayerSpeedSqr > 0.0f) ? RunningAnimation : IdleAnimation;
+	UPaperFlipbook* DesiredAnimation = (PlayerSpeedSqr > 0.0f) ? FB_Knight_Run : FB_Knight_Idle;
+	//UPaperFlipbook* DesiredAnimation = (PlayerSpeedSqr > 0.0f) ? RunningAnimation : IdleAnimation;
 	if( GetSprite()->GetFlipbook() != DesiredAnimation 	)
 	{
 		GetSprite()->SetFlipbook(DesiredAnimation);
